@@ -36,9 +36,18 @@ class StockSerializer(serializers.ModelSerializer):
         instance.address = validated_data.get('address', instance.address)
         instance.save()
 
-        instance.positions.all().delete()
-
         for position_data in positions_data:
-            StockProduct.objects.create(stock=instance, **position_data)
+            product = position_data.get('product')
+            quantity = position_data.get('quantity')
+            price = position_data.get('price')
+
+            StockProduct.objects.update_or_create(
+                stock=instance,
+                product=product,
+                defaults={'quantity': quantity, 'price': price}
+            )
+
+        current_product_ids = [position['product'].id for position in positions_data]
+        instance.positions.exclude(product__id__in=current_product_ids).delete()
 
         return instance

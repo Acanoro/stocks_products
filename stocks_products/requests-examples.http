@@ -7,7 +7,7 @@ POST {{baseUrl}}/products/
 Content-Type: application/json
 
 {
-  "title": "Помидор",
+  "title": "Помиwerдоfр",
   "description": "Лучшие помидоры на рынке"
 }
 
@@ -20,7 +20,7 @@ Content-Type: application/json
 ###
 
 # обновление продукта
-PATCH {{baseUrl}}/products/1/
+PATCH {{baseUrl}}/products/2/
 Content-Type: application/json
 
 {
@@ -30,7 +30,7 @@ Content-Type: application/json
 ###
 
 # удаление продукта
-DELETE {{baseUrl}}/products/1/
+DELETE {{baseUrl}}/products/2/
 Content-Type: application/json
 
 ###
@@ -46,10 +46,10 @@ POST {{baseUrl}}/stocks/
 Content-Type: application/json
 
 {
-  "address": "мой адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
+  "address": "моcй адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
   "positions": [
     {
-      "product": 2,
+      "product": 11,
       "quantity": 250,
       "price": 120.50
     },
@@ -70,7 +70,7 @@ Content-Type: application/json
 {
   "positions": [
     {
-      "product": 2,
+      "product": 11,
       "quantity": 100,
       "price": 130.80
     },

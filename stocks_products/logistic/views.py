@@ -16,13 +16,7 @@ class ProductViewSet(ModelViewSet):
 class StockViewSet(ModelViewSet):
     queryset = Stock.objects.all()
     serializer_class = StockSerializer
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        product_title = self.request.query_params.get('search', None)
-        if product_title:
-            queryset = queryset.filter(positions__product__title__icontains=product_title)
-        return queryset
-
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     search_fields = ['address']
+    filterset_fields = ['positions__product__title']
+
